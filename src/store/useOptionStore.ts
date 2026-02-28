@@ -1,4 +1,3 @@
-import { SEED_OPTIONS } from "@/data/seed";
 import { create } from "zustand";
 import { SEED_OPTIONS } from "@/data/seed";
 import { nanoid } from "nanoid";
@@ -9,9 +8,7 @@ import type {
   SortField,
   SortDirection,
 } from "@/lib/types";
-import { SEED_OPTIONS } from "@/data/seed";
 import { OptionSchema } from "@/lib/schemas";
-import { SEED_OPTIONS } from "@/data/seed";
 import {
   loadOptions,
   saveOption,
