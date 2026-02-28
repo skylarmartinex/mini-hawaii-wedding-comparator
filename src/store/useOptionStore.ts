@@ -1,4 +1,6 @@
+import { SEED_OPTIONS } from "@/data/seed";
 import { create } from "zustand";
+import { SEED_OPTIONS } from "@/data/seed";
 import { nanoid } from "nanoid";
 import type {
   WeddingOption,
@@ -7,7 +9,9 @@ import type {
   SortField,
   SortDirection,
 } from "@/lib/types";
+import { SEED_OPTIONS } from "@/data/seed";
 import { OptionSchema } from "@/lib/schemas";
+import { SEED_OPTIONS } from "@/data/seed";
 import {
   loadOptions,
   saveOption,
@@ -68,7 +72,12 @@ export const useOptionStore = create<OptionStore>((set, get) => ({
 
   hydrate: async () => {
     await migrateFromLegacyDB();
-    const options = await loadOptions();
+    let options = await loadOptions();
+    // Auto-load seed data on first visit
+    if (options.length === 0) {
+      await saveAllOptions(SEED_OPTIONS);
+      options = SEED_OPTIONS;
+    }
     set({ options, hydrated: true });
   },
 
