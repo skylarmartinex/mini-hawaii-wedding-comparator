@@ -40,12 +40,12 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
           {
                 id: "99916a94-1c80-4f5b-b9ac-4460aed292bb",
-                url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
+                url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0110.jpg",
                 caption: "Haiku Mill"
           },
           {
                 id: "bb26562b-a033-41f4-a30f-a35a4f96eae1",
-                url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
+                url: "https://images.squarespace-cdn.com/content/v1/5b778e4d55b02c576cf5dd73/1644814882888-9Y8NA3TACAYQUPCZQJXV/Haiku+Mill+Maui+Hawaii+Wedding+Photographers+Videographers+and+Photobooth+%2894%29.jpg?format=1000w",
                 caption: "Haiku Mill"
           }
     ],
@@ -100,7 +100,7 @@ export const SEED_OPTIONS: WeddingOption[] = [
           },
           {
                 id: "1eb57826-36bc-4535-94ff-8099eadcd9c4",
-                url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
+                url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.jpg/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.16x9.jpg",
                 caption: "Andaz Maui at Wailea Resort"
           }
     ],
@@ -149,12 +149,12 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
           {
                 id: "75f0821d-4afa-448a-ae71-6a625c4733a1",
-                url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1542160847859-1O6LQJQM7FL8DHIUQJWH/white-orchid-beach-house-wedding-maui-028.jpg",
                 caption: "Big Island Beach + Merriman's Reception"
           },
           {
                 id: "14c28b9a-fb85-4852-baaa-6bcf7164c364",
-                url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+                url: "https://images.getbento.com/accounts/6db51802be5a34030975528e8f6cea1a/media/images/Merrimans_Waimea_Dining_Room_2.jpg",
                 caption: "Big Island Beach + Merriman's Reception"
           },
           {
@@ -209,7 +209,7 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
           {
                 id: "7735cfb6-175b-4b5a-8074-9eb1cd482db1",
-                url: "https://images.unsplash.com/photo-1598135753163-6167c1a1ad65?w=800",
+                url: "https://www.kualoa.com/wp-content/uploads/2019/09/Kualoa-Ranch-Private-Nature-Reserve-Wedding-Venue.jpg",
                 caption: "Kualoa Ranch"
           }
     ],
@@ -309,12 +309,12 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
           {
                 id: "6afde82b-9a38-48dd-b80d-65ee3ca2ad66",
-                url: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=800",
+                url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547515046/wordpress/Kaanapali_2x_osz6xv.jpg",
                 caption: "Catamaran Sailing Dinner"
           },
           {
                 id: "5f13b136-cc5a-4b7b-bcae-36de9da464cf",
-                url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+                url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547858519/wordpress/DMolo-othertours_kak3sb.jpg",
                 caption: "Catamaran Sailing Dinner"
           },
           {
@@ -418,12 +418,12 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
           {
                 id: "ecda67c3-85e7-4c40-89dc-cdbfdcdd7c52",
-                url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800",
+                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692074778-RZYZZ4XGQ2398KBQN2RK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-264.jpg",
                 caption: "White Orchid Beach House"
           },
           {
                 id: "665c1fc6-085c-4b8e-8ada-8d1c26ef2582",
-                url: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800",
+                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692363750-BD4YPJZ5YGPP79J82SBK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-612.jpg",
                 caption: "White Orchid Beach House"
           },
           {
@@ -478,12 +478,12 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
       {
         id: "oc1-img1",
-        url: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Ballroom-Wedding-Reception.jpg",
         caption: "Castle-style exterior"
       },
       {
         id: "oc1-img2",
-        url: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Garden-Ceremony.jpg",
         caption: "Grand ballroom reception"
       }
     ],
@@ -584,7 +584,7 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
       {
         id: "oc3-img1",
-        url: "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800",
+        url: "https://www.anaheim.net/ImageRepository/Document?documentID=43087",
         caption: "Oak Canyon wedding ceremony"
       }
     ],
@@ -634,7 +634,7 @@ export const SEED_OPTIONS: WeddingOption[] = [
     images: [
       {
         id: "oc4-img1",
-        url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=800",
+        url: "https://cdn0.weddingwire.com/vendor/892744/3_2/960/jpg/alta-vista-country-club-wedding-venue-sunset.jpeg",
         caption: "Alta Vista ballroom"
       }
     ],
