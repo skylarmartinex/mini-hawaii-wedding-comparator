@@ -6,6 +6,8 @@ import {
   STORE_BUDGET,
   STORE_COMPARE,
   LS_PREFIX,
+  LEGACY_DB_NAME,
+  LEGACY_LS_PREFIX,
 } from "./constants";
 import type { WeddingOption, BudgetAssumptions, CompareBoard } from "./types";
 
@@ -37,6 +39,128 @@ function isIDBAvailable(): boolean {
     return typeof indexedDB !== "undefined";
   } catch {
     return false;
+  }
+}
+
+// ── Legacy migration ─────────────────────────────────────────────────────────
+
+export async function migrateFromLegacyDB(): Promise<void> {
+  try {
+    if (localStorage.getItem("wre_migrated_v1") === "true") return;
+
+    let legacyOptions: WeddingOption[] = [];
+    let legacyBudget: BudgetAssumptions | null = null;
+    let legacyCompare: CompareBoard | null = null;
+
+    // --- Migrate from old IndexedDB ---
+    if (isIDBAvailable()) {
+      try {
+        const legacyDb = await openDB(LEGACY_DB_NAME, 1);
+        const storeNames = Array.from(legacyDb.objectStoreNames);
+
+        if (storeNames.includes(STORE_OPTIONS)) {
+          const raw = await legacyDb.getAll(STORE_OPTIONS);
+          legacyOptions = raw.map((o: Record<string, unknown>) => {
+            const transformed = { ...o };
+            if ("island" in transformed) {
+              transformed.location = transformed.island;
+              delete transformed.island;
+            }
+            return transformed as WeddingOption;
+          });
+        }
+
+        if (storeNames.includes(STORE_BUDGET)) {
+          legacyBudget =
+            ((await legacyDb.get(STORE_BUDGET, "singleton")) as BudgetAssumptions | undefined) ??
+            null;
+        }
+
+        if (storeNames.includes(STORE_COMPARE)) {
+          legacyCompare =
+            ((await legacyDb.get(STORE_COMPARE, "singleton")) as CompareBoard | undefined) ?? null;
+        }
+
+        legacyDb.close();
+      } catch {
+        // Old DB may not exist — that's fine
+      }
+    }
+
+    // --- Migrate from old localStorage (overrides IDB if present) ---
+    const lsOptions = localStorage.getItem(`${LEGACY_LS_PREFIX}options`);
+    if (lsOptions) {
+      try {
+        const parsed: Array<Record<string, unknown>> = JSON.parse(lsOptions);
+        legacyOptions = parsed.map((o) => {
+          const transformed = { ...o };
+          if ("island" in transformed) {
+            transformed.location = transformed.island;
+            delete transformed.island;
+          }
+          return transformed as WeddingOption;
+        });
+      } catch {
+        // ignore malformed data
+      }
+    }
+
+    const lsBudget = localStorage.getItem(`${LEGACY_LS_PREFIX}budget`);
+    if (lsBudget) {
+      try {
+        legacyBudget = JSON.parse(lsBudget) as BudgetAssumptions;
+      } catch {
+        // ignore
+      }
+    }
+
+    const lsCompare = localStorage.getItem(`${LEGACY_LS_PREFIX}compare`);
+    if (lsCompare) {
+      try {
+        legacyCompare = JSON.parse(lsCompare) as CompareBoard;
+      } catch {
+        // ignore
+      }
+    }
+
+    // --- Write transformed data into the new DB ---
+    if (legacyOptions.length > 0 || legacyBudget || legacyCompare) {
+      const newDb = await getDB();
+
+      if (legacyOptions.length > 0) {
+        const tx = newDb.transaction(STORE_OPTIONS, "readwrite");
+        await tx.store.clear();
+        for (const o of legacyOptions) {
+          await tx.store.put(o);
+        }
+        await tx.done;
+      }
+
+      if (legacyBudget) {
+        await newDb.put(STORE_BUDGET, legacyBudget, "singleton");
+      }
+
+      if (legacyCompare) {
+        await newDb.put(STORE_COMPARE, legacyCompare, "singleton");
+      }
+    }
+
+    // --- Mark migration complete ---
+    localStorage.setItem("wre_migrated_v1", "true");
+
+    // --- Clean up old localStorage keys ---
+    localStorage.removeItem(`${LEGACY_LS_PREFIX}options`);
+    localStorage.removeItem(`${LEGACY_LS_PREFIX}budget`);
+    localStorage.removeItem(`${LEGACY_LS_PREFIX}compare`);
+
+    // --- Best-effort delete the old IDB ---
+    try {
+      indexedDB.deleteDatabase(LEGACY_DB_NAME);
+    } catch {
+      // non-blocking
+    }
+  } catch (err) {
+    console.error("[migrateFromLegacyDB] Migration failed, skipping:", err);
   }
 }
 

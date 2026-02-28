@@ -9,8 +9,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "MiniHawaii Wedding Comparator",
-  description: "Compare Hawaii wedding venues and options side-by-side",
+  title: "Wedding Research Engine",
+  description: "Research and compare wedding venues side-by-side",
 };
 
 export default function RootLayout({

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { OPTION_TYPES, ISLANDS, STATUSES, TRI_STATE, NOISE_LEVELS, COST_CONFIDENCE } from "@/lib/constants";
+import { OPTION_TYPES, STATUSES, TRI_STATE, NOISE_LEVELS, COST_CONFIDENCE } from "@/lib/constants";
 import { OptionCreateSchema } from "@/lib/schemas";
 import type { WeddingOption, OptionCreate, OptionImage } from "@/lib/types";
 import { useOptionStore } from "@/store/useOptionStore";
@@ -23,7 +23,7 @@ function emptyForm(): OptionCreate {
   return {
     name: "",
     type: "EVENT_FRIENDLY_RENTAL",
-    island: "Maui",
+    location: "",
     area: "",
     addressText: "",
     mapsUrl: "",
@@ -165,12 +165,12 @@ export function OptionForm({ open, onClose, editOption }: OptionFormProps) {
                 label: v,
               }))}
             />
-            <Select
-              id="island"
-              label="Island *"
-              value={form.island}
-              onChange={(e) => set("island", e.target.value)}
-              options={ISLANDS.map((i) => ({ value: i, label: i }))}
+            <Input
+              id="location"
+              label="Location"
+              value={form.location}
+              onChange={(e) => set("location", e.target.value)}
+              placeholder="e.g. Maui, Tuscany, Portland OR"
             />
             <Input
               id="area"

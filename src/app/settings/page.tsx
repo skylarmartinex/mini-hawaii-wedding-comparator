@@ -5,7 +5,7 @@ import { useBudgetStore } from "@/store/useBudgetStore";
 import { useOptionStore } from "@/store/useOptionStore";
 import { useCompareStore } from "@/store/useCompareStore";
 import { BAR_STYLE_LABELS, RENTAL_LEVEL_LABELS, BAR_STYLES, RENTAL_LEVELS } from "@/lib/constants";
-import { ExportBundleSchema } from "@/lib/schemas";
+import { ExportBundleSchema, LegacyOptionSchema } from "@/lib/schemas";
 import { downloadJson } from "@/lib/utils";
 import { clearAll } from "@/lib/persistence";
 import { SEED_OPTIONS } from "@/data/seed";
@@ -24,13 +24,13 @@ export default function SettingsPage() {
 
   const handleExport = () => {
     const bundle: ExportBundle = {
-      version: 1,
+      version: 2,
       exportedAt: new Date().toISOString(),
       options,
       budget,
       compare: board,
     };
-    downloadJson(bundle, `minihawaii-export-${new Date().toISOString().slice(0, 10)}.json`);
+    downloadJson(bundle, `wre-export-${new Date().toISOString().slice(0, 10)}.json`);
   };
 
   const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,18 +42,39 @@ export default function SettingsPage() {
     try {
       const text = await file.text();
       const raw = JSON.parse(text);
-      const result = ExportBundleSchema.safeParse(raw);
-      if (!result.success) {
-        setImportError("Invalid export file format: " + result.error.issues[0]?.message);
-        return;
+
+      // Try parsing as v2 first
+      const v2Result = ExportBundleSchema.safeParse(raw);
+      if (v2Result.success) {
+        await importOptions(v2Result.data.options);
+        await updateBudget(v2Result.data.budget);
+        for (const id of v2Result.data.compare.pinnedOptionIds) {
+          await useCompareStore.getState().pinOption(id);
+        }
+        setImportSuccess(true);
+      } else if (raw.version === 1) {
+        // Legacy v1 import: rename island → location on each option
+        const migratedOptions = (raw.options ?? []).map((opt: unknown) => {
+          const legacyResult = LegacyOptionSchema.safeParse(opt);
+          if (!legacyResult.success) return opt;
+          const { island, ...rest } = legacyResult.data;
+          return { ...rest, location: island ?? "" };
+        });
+        const migratedBundle = { ...raw, version: 2, options: migratedOptions };
+        const result = ExportBundleSchema.safeParse(migratedBundle);
+        if (!result.success) {
+          setImportError("Legacy import failed: " + result.error.issues[0]?.message);
+          return;
+        }
+        await importOptions(result.data.options);
+        await updateBudget(result.data.budget);
+        for (const id of result.data.compare.pinnedOptionIds) {
+          await useCompareStore.getState().pinOption(id);
+        }
+        setImportSuccess(true);
+      } else {
+        setImportError("Invalid export file format: " + v2Result.error.issues[0]?.message);
       }
-      await importOptions(result.data.options);
-      await updateBudget(result.data.budget);
-      // Compare board: reload from imported data
-      for (const id of result.data.compare.pinnedOptionIds) {
-        await useCompareStore.getState().pinOption(id);
-      }
-      setImportSuccess(true);
     } catch {
       setImportError("Failed to parse file. Make sure it's a valid JSON export.");
     }

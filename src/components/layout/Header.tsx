@@ -22,7 +22,7 @@ export function Header() {
           href="/"
           className="text-base font-bold tracking-tight text-gray-900"
         >
-          MiniHawaii
+          Wedding Research Engine
         </Link>
 
         <nav className="flex items-center gap-1" aria-label="Main navigation">

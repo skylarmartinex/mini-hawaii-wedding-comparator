@@ -59,7 +59,7 @@ export function OptionCard({ option, viewMode = "grid", onEdit }: OptionCardProp
               </h3>
             </Link>
             <p className="truncate text-xs text-slate-500">
-              {OPTION_TYPES[option.type as OptionTypeKey]} &middot; {option.island}
+              {OPTION_TYPES[option.type as OptionTypeKey]}{option.location ? ` · ${option.location}` : ""}
             </p>
           </div>
           <div className="hidden shrink-0 flex-col items-end md:flex">
@@ -139,8 +139,7 @@ export function OptionCard({ option, viewMode = "grid", onEdit }: OptionCardProp
           </h3>
         </Link>
         <p className="mt-0.5 text-xs text-slate-500 line-clamp-1">
-          {OPTION_TYPES[option.type as OptionTypeKey]} &middot; {option.island}
-          {option.area ? `, ${option.area}` : ""}
+          {OPTION_TYPES[option.type as OptionTypeKey]}{option.location ? ` · ${option.location}` : ""}{option.area ? `, ${option.area}` : ""}
         </p>
 
         {/* Cost */}

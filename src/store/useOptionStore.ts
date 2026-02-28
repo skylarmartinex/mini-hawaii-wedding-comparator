@@ -13,6 +13,7 @@ import {
   saveOption,
   deleteOption as deleteOptionDB,
   saveAllOptions,
+  migrateFromLegacyDB,
 } from "@/lib/persistence";
 
 interface OptionStore {
@@ -44,10 +45,11 @@ interface OptionStore {
   filteredOptions: (guestCount: number) => WeddingOption[];
   getOption: (id: string) => WeddingOption | undefined;
   allTags: () => string[];
+  allLocations: () => string[];
 }
 
 const DEFAULT_FILTERS: FilterState = {
-  island: null,
+  location: null,
   type: null,
   status: null,
   receptionOnSite: null,
@@ -65,6 +67,7 @@ export const useOptionStore = create<OptionStore>((set, get) => ({
   sortDir: "desc",
 
   hydrate: async () => {
+    await migrateFromLegacyDB();
     const options = await loadOptions();
     set({ options, hydrated: true });
   },
@@ -142,8 +145,8 @@ export const useOptionStore = create<OptionStore>((set, get) => ({
     }
 
     // Filters
-    if (filters.island) {
-      result = result.filter((o) => o.island === filters.island);
+    if (filters.location) {
+      result = result.filter((o) => o.location === filters.location);
     }
     if (filters.type) {
       result = result.filter((o) => o.type === filters.type);
@@ -208,5 +211,13 @@ export const useOptionStore = create<OptionStore>((set, get) => ({
       for (const t of o.tags) tags.add(t);
     }
     return Array.from(tags).sort();
+  },
+
+  allLocations: () => {
+    const locs = new Set<string>();
+    for (const o of get().options) {
+      if (o.location) locs.add(o.location);
+    }
+    return Array.from(locs).sort();
   },
 }));

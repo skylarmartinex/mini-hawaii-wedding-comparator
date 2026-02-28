@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useOptionStore } from "@/store/useOptionStore";
-import { OPTION_TYPES, ISLANDS, STATUSES, TRI_STATE, type OptionTypeKey, type StatusKey } from "@/lib/constants";
+import { OPTION_TYPES, STATUSES, TRI_STATE, type OptionTypeKey, type StatusKey } from "@/lib/constants";
 import { Select } from "@/components/ui/Select";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
@@ -19,7 +19,7 @@ const SORT_OPTIONS: { value: string; label: string }[] = [
 ];
 
 export function OptionFilters() {
-  const { filters, setFilter, resetFilters, setSort, sortField, sortDir } =
+  const { filters, setFilter, resetFilters, setSort, sortField, sortDir, allLocations } =
     useOptionStore();
 
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -66,12 +66,12 @@ export function OptionFilters() {
       {showAdvanced && (
         <div className="animate-in fade-in slide-in-from-top-2 pt-4 border-t border-slate-100 flex flex-wrap items-end gap-3">
           <Select
-            id="filter-island"
-            label="Island"
-            placeholder="All Islands"
-            value={filters.island ?? ""}
-            onChange={(e) => setFilter("island", e.target.value || null)}
-            options={ISLANDS.map((i) => ({ value: i, label: i }))}
+            id="filter-location"
+            label="Location"
+            placeholder="All Locations"
+            value={filters.location ?? ""}
+            onChange={(e) => setFilter("location", e.target.value || null)}
+            options={allLocations().map((l) => ({ value: l, label: l }))}
           />
 
           <Select

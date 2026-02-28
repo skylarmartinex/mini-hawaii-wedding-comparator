@@ -90,8 +90,7 @@ export default function OptionDetailPage() {
           {fit !== "unknown" && <FitBadge score={fitScoreMap[fit]} />}
         </div>
         <p className="mt-2 text-base text-slate-500">
-          {OPTION_TYPES[option.type as OptionTypeKey]} &middot; {option.island}
-          {option.area ? `, ${option.area}` : ""}
+          {OPTION_TYPES[option.type as OptionTypeKey]}{option.location ? ` · ${option.location}` : ""}{option.area ? `, ${option.area}` : ""}
         </p>
       </div>
 

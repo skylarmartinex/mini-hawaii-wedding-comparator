@@ -24,7 +24,7 @@ export type SortField =
 export type SortDirection = "asc" | "desc";
 
 export interface FilterState {
-  island: string | null;
+  location: string | null;
   type: string | null;
   status: string | null;
   receptionOnSite: string | null;

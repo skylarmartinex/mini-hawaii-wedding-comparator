@@ -62,7 +62,7 @@ export function CompareTable({ options, budget, onRemove }: CompareTableProps) {
                             {opt.photoRating != null && <Rating value={opt.photoRating} size="sm" />}
                         </div>
                         <p className="text-xs text-slate-500 line-clamp-1">
-                            {OPTION_TYPES[opt.type as OptionTypeKey]} &middot; {opt.island}
+                            {OPTION_TYPES[opt.type as OptionTypeKey]}{opt.location ? ` · ${opt.location}` : ""}
                         </p>
                     </div>
                 ))}

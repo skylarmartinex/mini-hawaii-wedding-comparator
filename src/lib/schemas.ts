@@ -45,7 +45,7 @@ export const OptionSchema = z.object({
   id: z.string(),
   name: z.string().min(1, "Name is required"),
   type: OptionTypeEnum,
-  island: z.string().min(1, "Island is required"),
+  location: z.string().default(""),
   area: z.string().default(""),
   addressText: z.string().optional(),
   mapsUrl: z.string().url().optional().or(z.literal("")),
@@ -107,8 +107,12 @@ export const CompareBoardSchema = z.object({
 
 // ── Export bundle ───────────────────────────────────────────────────────────
 
+export const LegacyOptionSchema = OptionSchema.omit({ location: true }).extend({
+  island: z.string().default(""),
+});
+
 export const ExportBundleSchema = z.object({
-  version: z.literal(1),
+  version: z.literal(2),
   exportedAt: z.string().datetime(),
   options: z.array(OptionSchema),
   budget: BudgetAssumptionsSchema,

@@ -16,17 +16,6 @@ export const OPTION_TYPES = {
 
 export type OptionTypeKey = keyof typeof OPTION_TYPES;
 
-export const ISLANDS = [
-  "Oahu",
-  "Maui",
-  "Big Island",
-  "Kauai",
-  "Molokai",
-  "Lanai",
-] as const;
-
-export type Island = (typeof ISLANDS)[number];
-
 export const STATUSES = {
   RESEARCHING: "Researching",
   SHORTLISTED: "Shortlisted",
@@ -79,9 +68,12 @@ export const NOISE_COLORS: Record<NoiseLevel, string> = {
   unknown: "text-gray-400",
 };
 
-export const DB_NAME = "mini-hawaii-wedding" as const;
-export const DB_VERSION = 1;
+export const DB_NAME = "wedding-research-engine" as const;
+export const DB_VERSION = 2;
 export const STORE_OPTIONS = "options" as const;
 export const STORE_BUDGET = "budget" as const;
 export const STORE_COMPARE = "compare" as const;
-export const LS_PREFIX = "mhw_" as const;
+export const LS_PREFIX = "wre_" as const;
+
+export const LEGACY_DB_NAME = "mini-hawaii-wedding" as const;
+export const LEGACY_LS_PREFIX = "mhw_" as const;
