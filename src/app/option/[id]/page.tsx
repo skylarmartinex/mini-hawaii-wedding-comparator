@@ -5,12 +5,10 @@ import { useParams, useRouter } from "next/navigation";
 import { useOptionStore } from "@/store/useOptionStore";
 import { useBudgetStore } from "@/store/useBudgetStore";
 import { useCompareStore } from "@/store/useCompareStore";
-import { OPTION_TYPES, STATUS_COLORS, NOISE_COLORS, type OptionTypeKey, type StatusKey, type NoiseLevel } from "@/lib/constants";
+import { OPTION_TYPES, type OptionTypeKey, type StatusKey } from "@/lib/constants";
 import {
   formatCostRange,
   computeFitLabel,
-  FIT_BADGE_STYLES,
-  FIT_BADGE_TEXT,
   triStateLabel,
   cn,
 } from "@/lib/utils";
@@ -18,6 +16,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Rating } from "@/components/ui/Rating";
 import { OptionForm } from "@/components/options/OptionForm";
+import { StatusBadge, RiskBadge, ConfidenceBadge, FitBadge } from "@/components/ui/SpecificBadges";
+import { ImageGallery } from "@/components/options/ImageGallery";
+import type { WeddingOption } from "@/lib/types";
 
 export default function OptionDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -28,12 +29,11 @@ export default function OptionDetailPage() {
   const budget = useBudgetStore((s) => s.budget);
   const { isPinned, pinOption, unpinOption, canPin } = useCompareStore();
   const [editOpen, setEditOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(0);
 
   if (!option) {
     return (
       <div className="py-20 text-center">
-        <p className="text-gray-500">Option not found.</p>
+        <p className="text-slate-500">Option not found.</p>
         <Button variant="ghost" className="mt-4" onClick={() => router.push("/")}>
           Back to list
         </Button>
@@ -44,6 +44,14 @@ export default function OptionDetailPage() {
   const fit = computeFitLabel(option, budget);
   const pinned = isPinned(option.id);
 
+  // Derive a fit score just for the badge
+  const fitScoreMap: Record<typeof fit, number> = {
+    under: 95,
+    within: 75,
+    over: 40,
+    unknown: 0
+  };
+
   const handleDelete = async () => {
     if (!confirm("Delete this option?")) return;
     await removeOption(option.id);
@@ -51,25 +59,25 @@ export default function OptionDetailPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-10">
       {/* Back + Actions */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 pb-4">
         <Button variant="ghost" size="sm" onClick={() => router.push("/")}>
           &larr; Back
         </Button>
         <div className="flex-1" />
         <Button
-          variant="secondary"
+          variant={pinned ? "primary" : "outline"}
           size="sm"
           onClick={() => (pinned ? unpinOption(option.id) : pinOption(option.id))}
           disabled={!pinned && !canPin()}
         >
           {pinned ? "Unpin from Compare" : "Pin to Compare"}
         </Button>
-        <Button variant="secondary" size="sm" onClick={() => setEditOpen(true)}>
+        <Button variant="outline" size="sm" onClick={() => setEditOpen(true)}>
           Edit
         </Button>
-        <Button variant="danger" size="sm" onClick={handleDelete}>
+        <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50" size="sm" onClick={handleDelete}>
           Delete
         </Button>
       </div>
@@ -77,13 +85,11 @@ export default function OptionDetailPage() {
       {/* Header */}
       <div>
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold text-gray-900">{option.name}</h1>
-          <Badge className={STATUS_COLORS[option.status as StatusKey]}>
-            {option.status}
-          </Badge>
-          <Badge className={FIT_BADGE_STYLES[fit]}>{FIT_BADGE_TEXT[fit]}</Badge>
+          <h1 className="text-3xl font-bold text-slate-900">{option.name}</h1>
+          <StatusBadge status={option.status} />
+          {fit !== "unknown" && <FitBadge score={fitScoreMap[fit]} />}
         </div>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-2 text-base text-slate-500">
           {OPTION_TYPES[option.type as OptionTypeKey]} &middot; {option.island}
           {option.area ? `, ${option.area}` : ""}
         </p>
@@ -91,96 +97,69 @@ export default function OptionDetailPage() {
 
       {/* Status quick-change */}
       <div className="flex gap-2">
-        {(["RESEARCHING", "SHORTLISTED", "FINALIST", "ELIMINATED"] as const).map(
+        {((["RESEARCHING", "SHORTLISTED", "FINALIST", "ELIMINATED"] as const)).map(
           (s) => (
             <button
               key={s}
               onClick={() => setStatus(option.id, s)}
               className={cn(
-                "rounded-full px-3 py-1 text-xs font-medium transition-colors",
+                "rounded-full px-4 py-1.5 text-xs font-semibold transition-colors border",
                 option.status === s
-                  ? STATUS_COLORS[s]
-                  : "bg-gray-50 text-gray-500 hover:bg-gray-100"
+                  ? "bg-slate-900 text-white border-transparent"
+                  : "bg-white text-slate-600 border-slate-300 hover:bg-slate-50"
               )}
             >
-              {s}
+              Mark {s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()}
             </button>
           )
         )}
       </div>
 
       <div className="grid gap-8 lg:grid-cols-3">
-        {/* Left: Images */}
-        <div className="lg:col-span-2 space-y-4">
-          {option.images.length > 0 ? (
-            <>
-              <div className="aspect-[16/10] overflow-hidden rounded-xl bg-gray-100">
-                <img
-                  src={option.images[selectedImage]?.url}
-                  alt={option.images[selectedImage]?.caption ?? option.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              {option.images.length > 1 && (
-                <div className="flex gap-2 overflow-x-auto">
-                  {option.images.map((img, i) => (
-                    <button
-                      key={img.id}
-                      onClick={() => setSelectedImage(i)}
-                      className={cn(
-                        "h-16 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors",
-                        i === selectedImage
-                          ? "border-gray-900"
-                          : "border-transparent opacity-70 hover:opacity-100"
-                      )}
-                    >
-                      <img
-                        src={img.url}
-                        alt={img.caption ?? ""}
-                        className="h-full w-full object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="flex aspect-[16/10] items-center justify-center rounded-xl bg-gray-100 text-gray-400">
-              No images added yet
-            </div>
-          )}
+        {/* Left: Images & Main Content */}
+        <div className="lg:col-span-2 space-y-8">
+
+          <ImageGallery images={option.images} title={option.name} />
 
           {/* Notes */}
           {option.notes && (
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900">Notes</h3>
-              <p className="mt-1 whitespace-pre-wrap text-sm text-gray-700">
+            <div className="rounded-xl bg-white border border-slate-200 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-slate-900 mb-3">Overall Notes</h3>
+              <p className="whitespace-pre-wrap text-sm text-slate-700 leading-relaxed">
                 {option.notes}
               </p>
             </div>
           )}
 
           {/* Pros / Cons */}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             {option.pros.length > 0 && (
-              <div>
-                <h3 className="text-sm font-semibold text-green-700">Pros</h3>
-                <ul className="mt-1 space-y-1">
+              <div className="rounded-xl bg-emerald-50/50 border border-emerald-100 p-5">
+                <h3 className="text-sm font-semibold text-emerald-800 flex items-center gap-2 mb-3">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                  Pros
+                </h3>
+                <ul className="space-y-2">
                   {option.pros.map((p, i) => (
-                    <li key={i} className="text-sm text-gray-700">
-                      <span className="text-green-600">+</span> {p}
+                    <li key={i} className="text-sm text-emerald-900 flex items-start">
+                      <span className="mr-2 mt-0.5 text-emerald-500 text-xs">•</span>
+                      <span>{p}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
             {option.cons.length > 0 && (
-              <div>
-                <h3 className="text-sm font-semibold text-red-700">Cons</h3>
-                <ul className="mt-1 space-y-1">
+              <div className="rounded-xl bg-red-50/50 border border-red-100 p-5">
+                <h3 className="text-sm font-semibold text-red-800 flex items-center gap-2 mb-3">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" /></svg>
+                  Cons
+                </h3>
+                <ul className="space-y-2">
                   {option.cons.map((c, i) => (
-                    <li key={i} className="text-sm text-gray-700">
-                      <span className="text-red-600">-</span> {c}
+                    <li key={i} className="text-sm text-red-900 flex items-start">
+                      <span className="mr-2 mt-0.5 text-red-500 text-xs">•</span>
+                      <span>{c}</span>
                     </li>
                   ))}
                 </ul>
@@ -190,13 +169,13 @@ export default function OptionDetailPage() {
 
           {/* Questions */}
           {option.questionsToAsk.length > 0 && (
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900">Questions to Ask</h3>
-              <ul className="mt-1 space-y-1">
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-slate-900 mb-4">Questions to Ask</h3>
+              <ul className="space-y-3">
                 {option.questionsToAsk.map((q, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <input type="checkbox" className="mt-0.5 rounded border-gray-300" />
-                    {q}
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                    <input type="checkbox" className="mt-0.5 rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                    <span>{q}</span>
                   </li>
                 ))}
               </ul>
@@ -205,64 +184,75 @@ export default function OptionDetailPage() {
         </div>
 
         {/* Right: Details sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Cost */}
-          <div className="rounded-xl border border-gray-200 p-4">
-            <h3 className="text-sm font-semibold text-gray-900">Cost</h3>
-            <p className="mt-1 text-lg font-bold text-gray-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-2">Estimated Cost</h3>
+            <p className="text-2xl font-bold text-slate-900 mb-2">
               {formatCostRange(option)}
             </p>
-            <p className="text-xs text-gray-500">
-              Confidence: {option.costConfidence}
-            </p>
+            <div className="mb-3">
+              <ConfidenceBadge level={option.costConfidence} />
+            </div>
             {option.costNotes && (
-              <p className="mt-2 text-xs text-gray-600">{option.costNotes}</p>
+              <p className="text-sm text-slate-600 border-t border-slate-100 pt-3">{option.costNotes}</p>
             )}
           </div>
 
           {/* Capacity */}
-          <div className="rounded-xl border border-gray-200 p-4">
-            <h3 className="text-sm font-semibold text-gray-900">Capacity</h3>
-            <div className="mt-1 space-y-1 text-sm text-gray-700">
-              {option.guestCapacitySeated != null && (
-                <p>Seated: {option.guestCapacitySeated}</p>
-              )}
-              {option.guestCapacityStanding != null && (
-                <p>Standing: {option.guestCapacityStanding}</p>
-              )}
-              {option.guestCapacitySeated == null &&
-                option.guestCapacityStanding == null && (
-                  <p className="text-gray-400">Not specified</p>
-                )}
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Capacity</h3>
+            <div className="space-y-2 text-sm text-slate-700">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Seated</span>
+                <span className="font-medium">{option.guestCapacitySeated ?? "Not specified"}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Standing</span>
+                <span className="font-medium">{option.guestCapacityStanding ?? "Not specified"}</span>
+              </div>
             </div>
           </div>
 
-          {/* Ceremony / Reception */}
-          <div className="rounded-xl border border-gray-200 p-4">
-            <h3 className="text-sm font-semibold text-gray-900">Feasibility</h3>
-            <div className="mt-1 space-y-1 text-sm text-gray-700">
-              <p>Ceremony on-site: {triStateLabel(option.ceremonyOnSite)}</p>
-              <p>Reception on-site: {triStateLabel(option.receptionOnSite)}</p>
+          {/* Feasibility */}
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Feasibility</h3>
+            <div className="space-y-2 text-sm text-slate-700">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Ceremony On-Site</span>
+                <span className="font-medium">{triStateLabel(option.ceremonyOnSite)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Reception On-Site</span>
+                <span className="font-medium">{triStateLabel(option.receptionOnSite)}</span>
+              </div>
             </div>
           </div>
 
           {/* Logistics */}
-          <div className="rounded-xl border border-gray-200 p-4">
-            <h3 className="text-sm font-semibold text-gray-900">Logistics</h3>
-            <div className="mt-1 space-y-1 text-sm text-gray-700">
-              {option.curfewTime && <p>Curfew: {option.curfewTime}</p>}
-              <p>
-                Noise risk:{" "}
-                <span className={NOISE_COLORS[option.noiseRisk as NoiseLevel]}>
-                  {option.noiseRisk}
-                </span>
-              </p>
-              {option.parkingNotes && <p>Parking: {option.parkingNotes}</p>}
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Logistics</h3>
+            <div className="space-y-3 text-sm text-slate-700">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Curfew</span>
+                <span className="font-medium">{option.curfewTime ?? "N/A"}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500">Noise Risk</span>
+                <RiskBadge level={option.noiseRisk} />
+              </div>
+              {option.parkingNotes && (
+                <div className="border-t border-slate-100 pt-3">
+                  <span className="text-slate-500 block mb-1">Parking</span>
+                  <span className="font-medium text-slate-900">{option.parkingNotes}</span>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Photo Rating */}
-          <div className="rounded-xl border border-gray-200 p-4">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Aesthetics</h3>
             <Rating
               label="Photo / Visibility Rating"
               value={option.photoRating}
@@ -272,19 +262,20 @@ export default function OptionDetailPage() {
 
           {/* Address / Map */}
           {(option.addressText || option.mapsUrl) && (
-            <div className="rounded-xl border border-gray-200 p-4">
-              <h3 className="text-sm font-semibold text-gray-900">Location</h3>
+            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Location</h3>
               {option.addressText && (
-                <p className="mt-1 text-sm text-gray-700">{option.addressText}</p>
+                <p className="text-sm text-slate-700 mb-3">{option.addressText}</p>
               )}
               {option.mapsUrl && (
                 <a
                   href={option.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 inline-block text-sm text-blue-600 hover:underline"
+                  className="inline-flex items-center text-sm font-medium text-teal-600 hover:text-teal-700 hover:underline"
                 >
-                  View on Map &rarr;
+                  View on Map
+                  <svg className="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
               )}
             </div>
@@ -292,16 +283,16 @@ export default function OptionDetailPage() {
 
           {/* Source Links */}
           {option.sourceLinks.length > 0 && (
-            <div className="rounded-xl border border-gray-200 p-4">
-              <h3 className="text-sm font-semibold text-gray-900">Links</h3>
-              <ul className="mt-1 space-y-1">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Source Links</h3>
+              <ul className="space-y-2">
                 {option.sourceLinks.map((link, i) => (
                   <li key={i}>
                     <a
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="truncate text-sm text-blue-600 hover:underline"
+                      className="block truncate text-sm text-blue-600 hover:underline"
                     >
                       {link}
                     </a>
@@ -313,12 +304,15 @@ export default function OptionDetailPage() {
 
           {/* Tags */}
           {option.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1">
-              {option.tags.map((tag) => (
-                <Badge key={tag} variant="outline">
-                  {tag}
-                </Badge>
-              ))}
+            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 className="text-xs uppercase tracking-wider font-semibold text-slate-500 mb-3">Tags</h3>
+              <div className="flex flex-wrap gap-2">
+                {option.tags.map((tag) => (
+                  <Badge key={tag} variant="outline" className="bg-slate-50">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
             </div>
           )}
         </div>

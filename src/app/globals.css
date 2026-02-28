@@ -4,8 +4,9 @@
   --font-sans: var(--font-geist-sans);
 }
 
-body {
-  background: #ffffff;
-  color: #171717;
-  font-family: var(--font-sans), system-ui, sans-serif;
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
 }

@@ -143,7 +143,7 @@ export function OptionForm({ open, onClose, editOption }: OptionFormProps) {
       title={editOption ? "Edit Option" : "Add Option"}
       className="max-w-3xl"
     >
-      <form onSubmit={handleSubmit} className="max-h-[70vh] space-y-6 overflow-y-auto pr-2">
+      <form onSubmit={handleSubmit} className="space-y-6 pb-6">
         {/* Basic Info */}
         <fieldset className="space-y-3">
           <legend className="text-sm font-semibold text-gray-900">Basic Info</legend>
