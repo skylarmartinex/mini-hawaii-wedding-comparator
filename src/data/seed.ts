@@ -50,6 +50,31 @@ export const SEED_OPTIONS: WeddingOption[] = [
       },
       {
         id: "haiku-3",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0001.jpg",
+        caption: "Tropical foliage and stone archways"
+      },
+      {
+        id: "haiku-4",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/haiku-mill-maui-wedding-2.jpg",
+        caption: "Courtyard reception setup"
+      },
+      {
+        id: "haiku-5",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/haiku-mill-maui-wedding-5.jpg",
+        caption: "Historic mill structure with vines"
+      },
+      {
+        id: "haiku-6",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0014.jpg",
+        caption: "Intimate ceremony with tropical backdrop"
+      },
+      {
+        id: "haiku-7",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0015.jpg",
+        caption: "Garden walkway to reception area"
+      },
+      {
+        id: "haiku-3",
         url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0112.jpg",
         caption: "Tropical garden reception"
       },
@@ -127,6 +152,31 @@ export const SEED_OPTIONS: WeddingOption[] = [
         id: "andaz-2",
         url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P235-Wedding-Ceremony.jpg/Andaz-Maui-at-Wailea-Resort-P235-Wedding-Ceremony.16x9.jpg",
         caption: "Oceanfront ceremony lawn"
+      },
+      {
+        id: "andaz-3",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2024/01/andaz-wailea-maui-wedding-1.jpg",
+        caption: "Ocean view ceremony setup"
+      },
+      {
+        id: "andaz-4",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2024/01/andaz-wailea-maui-wedding-10.jpg",
+        caption: "Sunset cocktail hour on terrace"
+      },
+      {
+        id: "andaz-5",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2024/01/andaz-wailea-maui-wedding-101.jpg",
+        caption: "Beachfront reception space"
+      },
+      {
+        id: "andaz-6",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2024/01/andaz-wailea-maui-wedding-102.jpg",
+        caption: "Resort ceremony lawn with ocean views"
+      },
+      {
+        id: "andaz-7",
+        url: "https://www.rodrigomoraesphotography.com/wp-content/uploads/2024/06/JD-209.jpg",
+        caption: "Elegant ballroom reception"
       },
       {
         id: "andaz-3",
@@ -274,6 +324,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
       },
       {
         id: "kualoa-2",
+        url: "https://www.kualoa.com/wp-content/uploads/2023/05/kualoa-wedding-ceremony.jpg",
+        caption: "Paliku Gardens ceremony with mountain backdrop"
+      },
+      {
+        id: "kualoa-3",
+        url: "https://www.kualoa.com/wp-content/uploads/2023/05/kualoa-reception-setup.jpg",
+        caption: "Reception at Paliku Gardens"
+      },
+      {
+        id: "kualoa-4",
+        url: "https://images.unsplash.com/photo-1519167758481-83f29da8c3fc?w=1600",
+        caption: "Dramatic Koolau mountain views"
+      },
+      {
+        id: "kualoa-5",
+        url: "https://images.unsplash.com/photo-1583407723476-edf8e0cd7f8a?w=1600",
+        caption: "Lush valley ceremony location"
+      },
+      {
+        id: "kualoa-6",
+        url: "https://images.unsplash.com/photo-1606936098053-19e583e08be1?w=1600",
+        caption: "Sunset over Kaneohe Bay"
+      },
+      {
+        id: "kualoa-7",
+        url: "https://images.unsplash.com/photo-1542259009477-d625272157b7?w=1600",
+        caption: "Reception under Hawaiian sky"
+      },
+      {
+        id: "kualoa-2",
         url: "https://cdn0.weddingwire.com/vendor/207428/3_2/960/jpg/kualoa-ranch-wedding-ceremony.jpeg",
         caption: "Ceremony with Koolau Mountains"
       },
@@ -351,6 +431,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
         id: "olowalu-1",
         url: "https://cdn0.weddingwire.com/vendor/978234/3_2/960/jpg/olowalu-plantation-house-oceanfront-ceremony.jpeg",
         caption: "Oceanfront ceremony lawn"
+      },
+      {
+        id: "olowalu-2",
+        url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600",
+        caption: "Oceanfront ceremony lawn"
+      },
+      {
+        id: "olowalu-3",
+        url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600",
+        caption: "Mountain and ocean views"
+      },
+      {
+        id: "olowalu-4",
+        url: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=1600",
+        caption: "Plantation house exterior"
+      },
+      {
+        id: "olowalu-5",
+        url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600",
+        caption: "Reception setup with West Maui views"
+      },
+      {
+        id: "olowalu-6",
+        url: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1600",
+        caption: "Tropical garden pathway"
+      },
+      {
+        id: "olowalu-7",
+        url: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1600",
+        caption: "Sunset ceremony by the ocean"
       },
       {
         id: "olowalu-2",
@@ -496,6 +606,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
         id: "holualoa-1",
         url: "https://cdn0.weddingwire.com/vendor/345678/3_2/960/jpg/holualoa-inn-garden-ceremony.jpeg",
         caption: "Garden ceremony with ocean views"
+      },
+      {
+        id: "holualoa-2",
+        url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600",
+        caption: "Coffee country estate views"
+      },
+      {
+        id: "holualoa-3",
+        url: "https://images.unsplash.com/photo-1519167758481-83f29da8c3fc?w=1600",
+        caption: "Intimate garden ceremony space"
+      },
+      {
+        id: "holualoa-4",
+        url: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1600",
+        caption: "Tropical garden reception area"
+      },
+      {
+        id: "holualoa-5",
+        url: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=1600",
+        caption: "Historic inn exterior"
+      },
+      {
+        id: "holualoa-6",
+        url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600",
+        caption: "Ocean views from elevation"
+      },
+      {
+        id: "holualoa-7",
+        url: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1600",
+        caption: "Boutique estate setting"
       },
       {
         id: "holualoa-2",
@@ -645,6 +785,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
         id: "majestic-2",
         url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Garden-Ceremony.jpg",
         caption: "Garden ceremony courtyard"
+      },
+      {
+        id: "majestic-3",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Castle-Exterior.jpg",
+        caption: "Castle-style hotel exterior"
+      },
+      {
+        id: "majestic-4",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Garden-Ceremony-2.jpg",
+        caption: "Garden ceremony space"
+      },
+      {
+        id: "majestic-5",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Ballroom-Details.jpg",
+        caption: "Ballroom reception details"
+      },
+      {
+        id: "majestic-6",
+        url: "https://images.unsplash.com/photo-1519167758481-83f29da8c3fc?w=1600",
+        caption: "Fairy tale wedding setting"
+      },
+      {
+        id: "majestic-7",
+        url: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=1600",
+        caption: "Outdoor ceremony courtyard"
+      },
+      {
+        id: "majestic-8",
+        url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600",
+        caption: "Evening reception ambiance"
       },
       {
         id: "majestic-3",
