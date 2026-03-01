@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Wedding Research Engine",
+    "slug": "wedding-research-engine",
+    "version": "1.0.0",
+    "scheme": "wedding-re",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.wedding.researchengine",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.wedding.researchengine",
+      "adaptiveIcon": {
+        "backgroundColor": "#0d9488"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
