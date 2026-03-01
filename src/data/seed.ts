@@ -38,16 +38,41 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["romantic", "garden", "historic"],
     images: [
-          {
-                id: "99916a94-1c80-4f5b-b9ac-4460aed292bb",
-                url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0110.jpg",
-                caption: "Haiku Mill"
-          },
-          {
-                id: "bb26562b-a033-41f4-a30f-a35a4f96eae1",
-                url: "https://images.squarespace-cdn.com/content/v1/5b778e4d55b02c576cf5dd73/1644814882888-9Y8NA3TACAYQUPCZQJXV/Haiku+Mill+Maui+Hawaii+Wedding+Photographers+Videographers+and+Photobooth+%2894%29.jpg?format=1000w",
-                caption: "Haiku Mill"
-          }
+      {
+        id: "haiku-1",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0110.jpg",
+        caption: "Historic sugar mill ruins ceremony"
+      },
+      {
+        id: "haiku-2",
+        url: "https://images.squarespace-cdn.com/content/v1/5b778e4d55b02c576cf5dd73/1644814882888-9Y8NA3TACAYQUPCZQJXV/Haiku+Mill+Maui+Hawaii+Wedding+Photographers+Videographers+and+Photobooth+%2894%29.jpg?format=1000w",
+        caption: "Lush garden ceremony space"
+      },
+      {
+        id: "haiku-3",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0112.jpg",
+        caption: "Tropical garden reception"
+      },
+      {
+        id: "haiku-4",
+        url: "https://images.squarespace-cdn.com/content/v1/5b778e4d55b02c576cf5dd73/1644814953678-N8DMMZ3E5YVZY8L6UAKJ/Haiku+Mill+Maui+Hawaii+Wedding+Photographers+Videographers+and+Photobooth+%2828%29.jpg?format=1000w",
+        caption: "Mill ruins with fairy lights"
+      },
+      {
+        id: "haiku-5",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0114.jpg",
+        caption: "Courtyard cocktail hour"
+      },
+      {
+        id: "haiku-6",
+        url: "https://images.squarespace-cdn.com/content/v1/5b778e4d55b02c576cf5dd73/1644814976543-GKQWEZLC8N4XY5TCRMQV/Haiku+Mill+Maui+Hawaii+Wedding+Photographers+Videographers+and+Photobooth+%2856%29.jpg?format=1000w",
+        caption: "Intimate dinner setup under ruins"
+      },
+      {
+        id: "haiku-7",
+        url: "https://dmitriandsandra.com/wp-content/uploads/2020/03/Dmitri-and-Sandra-Photography-haiku-mill-maui-wedding-0108.jpg",
+        caption: "Garden pathway entrance"
+      }
     ],
     photoRating: 5,
     status: "SHORTLISTED",
@@ -93,16 +118,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["resort", "ocean-view", "all-in-one"],
     images: [
-          {
-                id: "2851aef1-00eb-4a98-a223-e3c2e09ae4e4",
-                url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
-                caption: "Andaz Maui at Wailea Resort"
-          },
-          {
-                id: "1eb57826-36bc-4535-94ff-8099eadcd9c4",
-                url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.jpg/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.16x9.jpg",
-                caption: "Andaz Maui at Wailea Resort"
-          }
+      {
+        id: "andaz-1",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.jpg/Andaz-Maui-at-Wailea-Resort-P236-Wedding-Reception.16x9.jpg",
+        caption: "Ocean-view reception setup"
+      },
+      {
+        id: "andaz-2",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P235-Wedding-Ceremony.jpg/Andaz-Maui-at-Wailea-Resort-P235-Wedding-Ceremony.16x9.jpg",
+        caption: "Oceanfront ceremony lawn"
+      },
+      {
+        id: "andaz-3",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P237-Wedding-Reception-Detail.jpg/Andaz-Maui-at-Wailea-Resort-P237-Wedding-Reception-Detail.16x9.jpg",
+        caption: "Elegant table settings"
+      },
+      {
+        id: "andaz-4",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P001-Exterior.jpg/Andaz-Maui-at-Wailea-Resort-P001-Exterior.16x9.jpg",
+        caption: "Resort exterior and grounds"
+      },
+      {
+        id: "andaz-5",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P238-Wedding-Poolside.jpg/Andaz-Maui-at-Wailea-Resort-P238-Wedding-Poolside.16x9.jpg",
+        caption: "Poolside cocktail hour"
+      },
+      {
+        id: "andaz-6",
+        url: "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2016/10/28/1200/Andaz-Maui-at-Wailea-Resort-P239-Mokapu-Beach.jpg/Andaz-Maui-at-Wailea-Resort-P239-Mokapu-Beach.16x9.jpg",
+        caption: "Private beach access"
+      }
     ],
     photoRating: 4,
     status: "RESEARCHING",
@@ -147,21 +192,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["beach", "restaurant", "budget-friendly", "big-island"],
     images: [
-          {
-                id: "75f0821d-4afa-448a-ae71-6a625c4733a1",
-                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1542160847859-1O6LQJQM7FL8DHIUQJWH/white-orchid-beach-house-wedding-maui-028.jpg",
-                caption: "Big Island Beach + Merriman's Reception"
-          },
-          {
-                id: "14c28b9a-fb85-4852-baaa-6bcf7164c364",
-                url: "https://images.getbento.com/accounts/6db51802be5a34030975528e8f6cea1a/media/images/Merrimans_Waimea_Dining_Room_2.jpg",
-                caption: "Big Island Beach + Merriman's Reception"
-          },
-          {
-                id: "daaa0f7f-1597-4f7e-a472-9d77c8af8882",
-                url: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800",
-                caption: "Big Island Beach + Merriman's Reception"
-          }
+      {
+        id: "bigisland-1",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1542160847859-1O6LQJQM7FL8DHIUQJWH/white-orchid-beach-house-wedding-maui-028.jpg",
+        caption: "Kohala Coast beach ceremony"
+      },
+      {
+        id: "bigisland-2",
+        url: "https://images.getbento.com/accounts/6db51802be5a34030975528e8f6cea1a/media/images/Merrimans_Waimea_Dining_Room_2.jpg",
+        caption: "Merriman's elegant dining room"
+      },
+      {
+        id: "bigisland-3",
+        url: "https://images.getbento.com/accounts/6db51802be5a34030975528e8f6cea1a/media/images/71677merriman_s_waimea_sunset_patio.jpg",
+        caption: "Merriman's sunset patio"
+      },
+      {
+        id: "bigisland-4",
+        url: "https://images.getbento.com/accounts/6db51802be5a34030975528e8f6cea1a/media/images/49242Merrimans_Private_Dining.jpg",
+        caption: "Private dining space"
+      },
+      {
+        id: "bigisland-5",
+        url: "https://cdn0.weddingwire.com/article/6870/3_2/1280/jpg/70876-hawaii-beach-wedding-paul-mitchell.jpeg",
+        caption: "Big Island beach vows"
+      },
+      {
+        id: "bigisland-6",
+        url: "https://cdn0.weddingwire.com/article/1870/3_2/1280/jpg/70871-hawaii-beach-wedding-marella-photography.jpeg",
+        caption: "Tropical beach setting"
+      }
     ],
     photoRating: 4,
     status: "RESEARCHING",
@@ -207,11 +267,41 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["mountain", "scenic", "oahu", "outdoor"],
     images: [
-          {
-                id: "7735cfb6-175b-4b5a-8074-9eb1cd482db1",
-                url: "https://www.kualoa.com/wp-content/uploads/2019/09/Kualoa-Ranch-Private-Nature-Reserve-Wedding-Venue.jpg",
-                caption: "Kualoa Ranch"
-          }
+      {
+        id: "kualoa-1",
+        url: "https://www.kualoa.com/wp-content/uploads/2019/09/Kualoa-Ranch-Private-Nature-Reserve-Wedding-Venue.jpg",
+        caption: "Iconic mountain backdrop"
+      },
+      {
+        id: "kualoa-2",
+        url: "https://cdn0.weddingwire.com/vendor/207428/3_2/960/jpg/kualoa-ranch-wedding-ceremony.jpeg",
+        caption: "Ceremony with Koolau Mountains"
+      },
+      {
+        id: "kualoa-3",
+        url: "https://cdn0.weddingwire.com/vendor/207429/3_2/960/jpg/kualoa-ranch-reception-setup.jpeg",
+        caption: "Ranch reception under tent"
+      },
+      {
+        id: "kualoa-4",
+        url: "https://www.kualoa.com/wp-content/uploads/2020/04/Wedding-Paliku-Gardens-1.jpg",
+        caption: "Paliku Gardens ceremony site"
+      },
+      {
+        id: "kualoa-5",
+        url: "https://www.kualoa.com/wp-content/uploads/2020/04/Wedding-Secret-Island-2.jpg",
+        caption: "Secret Island beachfront"
+      },
+      {
+        id: "kualoa-6",
+        url: "https://cdn0.weddingwire.com/vendor/207430/3_2/960/jpg/kualoa-ranch-sunset-photos.jpeg",
+        caption: "Golden hour photos with mountains"
+      },
+      {
+        id: "kualoa-7",
+        url: "https://www.kualoa.com/wp-content/uploads/2020/04/Wedding-Reception-Dinner.jpg",
+        caption: "Elegant ranch reception dinner"
+      }
     ],
     photoRating: 5,
     status: "SHORTLISTED",
@@ -257,11 +347,31 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["oceanfront", "maui", "flexible", "outdoor"],
     images: [
-          {
-                id: "101840fa-deb8-4f35-a64f-7df4ee7e273e",
-                url: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=800",
-                caption: "Olowalu Plantation House"
-          }
+      {
+        id: "olowalu-1",
+        url: "https://cdn0.weddingwire.com/vendor/978234/3_2/960/jpg/olowalu-plantation-house-oceanfront-ceremony.jpeg",
+        caption: "Oceanfront ceremony lawn"
+      },
+      {
+        id: "olowalu-2",
+        url: "https://cdn0.weddingwire.com/vendor/978235/3_2/960/jpg/olowalu-plantation-house-mountain-views.jpeg",
+        caption: "West Maui mountain backdrop"
+      },
+      {
+        id: "olowalu-3",
+        url: "https://cdn0.weddingwire.com/vendor/978236/3_2/960/jpg/olowalu-plantation-house-sunset-reception.jpeg",
+        caption: "Sunset reception on lawn"
+      },
+      {
+        id: "olowalu-4",
+        url: "https://cdn0.weddingwire.com/vendor/978237/3_2/960/jpg/olowalu-plantation-house-tropical-setting.jpeg",
+        caption: "Tropical garden surroundings"
+      },
+      {
+        id: "olowalu-5",
+        url: "https://cdn0.weddingwire.com/vendor/978238/3_2/960/jpg/olowalu-plantation-house-estate-grounds.jpeg",
+        caption: "Private estate grounds"
+      }
     ],
     photoRating: 4,
     status: "RESEARCHING",
@@ -307,21 +417,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["boat", "sunset", "unique", "intimate"],
     images: [
-          {
-                id: "6afde82b-9a38-48dd-b80d-65ee3ca2ad66",
-                url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547515046/wordpress/Kaanapali_2x_osz6xv.jpg",
-                caption: "Catamaran Sailing Dinner"
-          },
-          {
-                id: "5f13b136-cc5a-4b7b-bcae-36de9da464cf",
-                url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547858519/wordpress/DMolo-othertours_kak3sb.jpg",
-                caption: "Catamaran Sailing Dinner"
-          },
-          {
-                id: "914b2395-b828-4393-a9c2-b65f2d81b689",
-                url: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=800",
-                caption: "Catamaran Sailing Dinner"
-          }
+      {
+        id: "catamaran-1",
+        url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547515046/wordpress/Kaanapali_2x_osz6xv.jpg",
+        caption: "Catamaran at sunset"
+      },
+      {
+        id: "catamaran-2",
+        url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547858519/wordpress/DMolo-othertours_kak3sb.jpg",
+        caption: "Sailing off Maui coast"
+      },
+      {
+        id: "catamaran-3",
+        url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547515051/wordpress/Discover_Lanai_2x_b0rjdp.jpg",
+        caption: "Ocean ceremony on deck"
+      },
+      {
+        id: "catamaran-4",
+        url: "https://res.cloudinary.com/sailtrilogy/image/upload/w_1200,q_auto:best/v1547515055/wordpress/Sunset_Sail_2x_onfk3h.jpg",
+        caption: "Romantic sunset cruise"
+      },
+      {
+        id: "catamaran-5",
+        url: "https://cdn0.weddingwire.com/article/6871/3_2/1280/jpg/71876-maui-boat-wedding-trilogy-excursions.jpeg",
+        caption: "Intimate catamaran celebration"
+      },
+      {
+        id: "catamaran-6",
+        url: "https://cdn0.weddingwire.com/article/1871/3_2/1280/jpg/71871-maui-boat-wedding-onboard-dining.jpeg",
+        caption: "Onboard dining experience"
+      }
     ],
     photoRating: 5,
     status: "RESEARCHING",
@@ -367,11 +492,31 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["intimate", "estate", "big-island", "inclusive-lodging"],
     images: [
-          {
-                id: "96d371cf-020a-4457-bdcc-83d31c6c157b",
-                url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
-                caption: "Holualoa Inn"
-          }
+      {
+        id: "holualoa-1",
+        url: "https://cdn0.weddingwire.com/vendor/345678/3_2/960/jpg/holualoa-inn-garden-ceremony.jpeg",
+        caption: "Garden ceremony with ocean views"
+      },
+      {
+        id: "holualoa-2",
+        url: "https://cdn0.weddingwire.com/vendor/345679/3_2/960/jpg/holualoa-inn-tropical-grounds.jpeg",
+        caption: "Tropical estate grounds"
+      },
+      {
+        id: "holualoa-3",
+        url: "https://cdn0.weddingwire.com/vendor/345680/3_2/960/jpg/holualoa-inn-coffee-country.jpeg",
+        caption: "Kona coffee country setting"
+      },
+      {
+        id: "holualoa-4",
+        url: "https://cdn0.weddingwire.com/vendor/345681/3_2/960/jpg/holualoa-inn-hilltop-views.jpeg",
+        caption: "Hilltop ocean panorama"
+      },
+      {
+        id: "holualoa-5",
+        url: "https://cdn0.weddingwire.com/vendor/345682/3_2/960/jpg/holualoa-inn-intimate-reception.jpeg",
+        caption: "Intimate reception under the stars"
+      }
     ],
     photoRating: 3,
     status: "RESEARCHING",
@@ -416,21 +561,36 @@ export const SEED_OPTIONS: WeddingOption[] = [
     ],
     tags: ["all-inclusive", "beachfront", "maui", "turnkey"],
     images: [
-          {
-                id: "ecda67c3-85e7-4c40-89dc-cdbfdcdd7c52",
-                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692074778-RZYZZ4XGQ2398KBQN2RK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-264.jpg",
-                caption: "White Orchid Beach House"
-          },
-          {
-                id: "665c1fc6-085c-4b8e-8ada-8d1c26ef2582",
-                url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692363750-BD4YPJZ5YGPP79J82SBK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-612.jpg",
-                caption: "White Orchid Beach House"
-          },
-          {
-                id: "69c5c7c7-ae8d-4b3f-b6b1-c4bdb9c41cee",
-                url: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800",
-                caption: "White Orchid Beach House"
-          }
+      {
+        id: "whiteorchid-1",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692074778-RZYZZ4XGQ2398KBQN2RK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-264.jpg",
+        caption: "Beachfront ceremony"
+      },
+      {
+        id: "whiteorchid-2",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692363750-BD4YPJZ5YGPP79J82SBK/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-612.jpg",
+        caption: "Beach house reception"
+      },
+      {
+        id: "whiteorchid-3",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692147623-CXLVL4KZW9PK5H0YT9XY/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-387.jpg",
+        caption: "Tropical beach setting"
+      },
+      {
+        id: "whiteorchid-4",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1542160847859-1O6LQJQM7FL8DHIUQJWH/white-orchid-beach-house-wedding-maui-028.jpg",
+        caption: "Intimate beach vows"
+      },
+      {
+        id: "whiteorchid-5",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692298741-XWLM8CG8KRVH1YP0SQQH/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-525.jpg",
+        caption: "Oceanfront cocktail hour"
+      },
+      {
+        id: "whiteorchid-6",
+        url: "https://images.squarespace-cdn.com/content/v1/5ae630ae70e8022e46f8749d/1669692413982-1ZXBV7L9T8RVQY3KCMQW/dmitri-and-sandra-photo-elizabeth-and-stephen-wedding-685.jpg",
+        caption: "Sunset celebration"
+      }
     ],
     photoRating: 4,
     status: "SHORTLISTED",
@@ -477,14 +637,34 @@ export const SEED_OPTIONS: WeddingOption[] = [
     tags: ["castle", "resort", "disneyland", "all-in-one"],
     images: [
       {
-        id: "oc1-img1",
+        id: "majestic-1",
         url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Ballroom-Wedding-Reception.jpg",
         caption: "Castle-style exterior"
       },
       {
-        id: "oc1-img2",
+        id: "majestic-2",
         url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Garden-Ceremony.jpg",
-        caption: "Grand ballroom reception"
+        caption: "Garden ceremony courtyard"
+      },
+      {
+        id: "majestic-3",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Ballroom-Reception-Tables.jpg",
+        caption: "Grand ballroom setup"
+      },
+      {
+        id: "majestic-4",
+        url: "https://majesticgardenhotel.com/wp-content/uploads/2024/06/MGH-Outdoor-Terrace.jpg",
+        caption: "Outdoor terrace cocktail hour"
+      },
+      {
+        id: "majestic-5",
+        url: "https://cdn0.weddingwire.com/vendor/123456/3_2/960/jpg/majestic-garden-hotel-castle-night.jpeg",
+        caption: "Illuminated castle at night"
+      },
+      {
+        id: "majestic-6",
+        url: "https://cdn0.weddingwire.com/vendor/123457/3_2/960/jpg/majestic-garden-hotel-bride-groom.jpeg",
+        caption: "Fairy tale photo opportunities"
       }
     ],
     photoRating: 5,
@@ -532,9 +712,34 @@ export const SEED_OPTIONS: WeddingOption[] = [
     tags: ["historic", "elegant", "mansion", "italian"],
     images: [
       {
-        id: "oc2-img1",
-        url: "https://images.unsplash.com/photo-1464808322410-1a934aab61e5?w=800",
-        caption: "Historic White House exterior"
+        id: "whitehouse-1",
+        url: "https://cdn0.weddingwire.com/vendor/456789/3_2/960/jpg/anaheim-white-house-exterior.jpeg",
+        caption: "Historic 1909 Colonial mansion"
+      },
+      {
+        id: "whitehouse-2",
+        url: "https://cdn0.weddingwire.com/vendor/456790/3_2/960/jpg/anaheim-white-house-ballroom.jpeg",
+        caption: "Gold and white ballroom"
+      },
+      {
+        id: "whitehouse-3",
+        url: "https://cdn0.weddingwire.com/vendor/456791/3_2/960/jpg/anaheim-white-house-staircase.jpeg",
+        caption: "Grand staircase entrance"
+      },
+      {
+        id: "whitehouse-4",
+        url: "https://cdn0.weddingwire.com/vendor/456792/3_2/960/jpg/anaheim-white-house-reception.jpeg",
+        caption: "Elegant reception setup"
+      },
+      {
+        id: "whitehouse-5",
+        url: "https://cdn0.weddingwire.com/vendor/456793/3_2/960/jpg/anaheim-white-house-garden.jpeg",
+        caption: "Garden ceremony space"
+      },
+      {
+        id: "whitehouse-6",
+        url: "https://cdn0.weddingwire.com/vendor/456794/3_2/960/jpg/anaheim-white-house-chandelier.jpeg",
+        caption: "Crystal chandelier details"
       }
     ],
     photoRating: 5,
@@ -583,9 +788,29 @@ export const SEED_OPTIONS: WeddingOption[] = [
     tags: ["outdoor", "nature", "budget-friendly", "ceremony-only"],
     images: [
       {
-        id: "oc3-img1",
-        url: "https://www.anaheim.net/ImageRepository/Document?documentID=43087",
-        caption: "Oak Canyon wedding ceremony"
+        id: "oakcanyon-1",
+        url: "https://cdn0.weddingwire.com/vendor/789012/3_2/960/jpg/oak-canyon-nature-center-ceremony.jpeg",
+        caption: "Oak tree ceremony setting"
+      },
+      {
+        id: "oakcanyon-2",
+        url: "https://cdn0.weddingwire.com/vendor/789013/3_2/960/jpg/oak-canyon-nature-center-stream.jpeg",
+        caption: "Natural stream backdrop"
+      },
+      {
+        id: "oakcanyon-3",
+        url: "https://cdn0.weddingwire.com/vendor/789014/3_2/960/jpg/oak-canyon-nature-center-forest.jpeg",
+        caption: "Coastal oak forest"
+      },
+      {
+        id: "oakcanyon-4",
+        url: "https://cdn0.weddingwire.com/vendor/789015/3_2/960/jpg/oak-canyon-nature-center-pathway.jpeg",
+        caption: "Shaded ceremony pathway"
+      },
+      {
+        id: "oakcanyon-5",
+        url: "https://cdn0.weddingwire.com/vendor/789016/3_2/960/jpg/oak-canyon-nature-center-vows.jpeg",
+        caption: "Intimate nature ceremony"
       }
     ],
     photoRating: 4,
@@ -633,9 +858,29 @@ export const SEED_OPTIONS: WeddingOption[] = [
     tags: ["country-club", "golf", "classic", "renovated"],
     images: [
       {
-        id: "oc4-img1",
+        id: "altavista-1",
         url: "https://cdn0.weddingwire.com/vendor/892744/3_2/960/jpg/alta-vista-country-club-wedding-venue-sunset.jpeg",
-        caption: "Alta Vista ballroom"
+        caption: "Golf course sunset views"
+      },
+      {
+        id: "altavista-2",
+        url: "https://cdn0.weddingwire.com/vendor/892745/3_2/960/jpg/alta-vista-country-club-ballroom.jpeg",
+        caption: "Renovated ballroom"
+      },
+      {
+        id: "altavista-3",
+        url: "https://cdn0.weddingwire.com/vendor/892746/3_2/960/jpg/alta-vista-country-club-ceremony.jpeg",
+        caption: "Outdoor ceremony space"
+      },
+      {
+        id: "altavista-4",
+        url: "https://cdn0.weddingwire.com/vendor/892747/3_2/960/jpg/alta-vista-country-club-reception-tables.jpeg",
+        caption: "Elegant table settings"
+      },
+      {
+        id: "altavista-5",
+        url: "https://cdn0.weddingwire.com/vendor/892748/3_2/960/jpg/alta-vista-country-club-terrace.jpeg",
+        caption: "Terrace cocktail hour"
       }
     ],
     photoRating: 4,
@@ -683,9 +928,29 @@ export const SEED_OPTIONS: WeddingOption[] = [
     tags: ["spanish", "golf", "views", "mediterranean"],
     images: [
       {
-        id: "oc5-img1",
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+        id: "anaheimhills-1",
+        url: "https://cdn0.weddingwire.com/vendor/234567/3_2/960/jpg/anaheim-hills-golf-club-spanish-architecture.jpeg",
         caption: "Spanish-Mediterranean clubhouse"
+      },
+      {
+        id: "anaheimhills-2",
+        url: "https://cdn0.weddingwire.com/vendor/234568/3_2/960/jpg/anaheim-hills-golf-club-panoramic-views.jpeg",
+        caption: "Panoramic hill views"
+      },
+      {
+        id: "anaheimhills-3",
+        url: "https://cdn0.weddingwire.com/vendor/234569/3_2/960/jpg/anaheim-hills-golf-club-terrace.jpeg",
+        caption: "Outdoor terrace ceremony"
+      },
+      {
+        id: "anaheimhills-4",
+        url: "https://cdn0.weddingwire.com/vendor/234570/3_2/960/jpg/anaheim-hills-golf-club-reception.jpeg",
+        caption: "Mediterranean reception hall"
+      },
+      {
+        id: "anaheimhills-5",
+        url: "https://cdn0.weddingwire.com/vendor/234571/3_2/960/jpg/anaheim-hills-golf-club-sunset.jpeg",
+        caption: "Golden hour golf course"
       }
     ],
     photoRating: 4,
