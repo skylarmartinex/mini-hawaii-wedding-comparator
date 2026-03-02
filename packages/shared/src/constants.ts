@@ -11,6 +11,8 @@ export const OPTION_TYPES = {
   PARK_GARDEN_PERMIT_PLUS_RECEPTION: "Park / Garden Permit + Reception",
   BOAT_BUYOUT: "Boat Buyout",
   ALL_INCLUSIVE_PLANNER_PACKAGE: "All-Inclusive Planner Package",
+  OUTDOOR_VENUE: "Outdoor Venue",
+  COUNTRY_CLUB: "Country Club",
   TWO_LOCATION_CEREMONY_RECEPTION: "Two-Location (Ceremony + Reception)",
 } as const;
 
